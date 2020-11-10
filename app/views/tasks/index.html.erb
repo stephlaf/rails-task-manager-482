@@ -1,0 +1,17 @@
+<h1>All tasks</h1>
+
+<h2><%= link_to 'Create a new task!', new_task_path %> </h2>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+
+      <%= link_to complete_path(task, task: { completed: !task.completed }), method: 'patch' do %>
+        <%= task.completed ? '👍' : '👎' %>
+      <% end %>
+
+
+      <%= link_to task.title, task_path(task) %>
+    </li>    
+  <% end %>
+</ul>
